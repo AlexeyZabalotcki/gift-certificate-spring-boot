@@ -1,0 +1,24 @@
+server:
+ port: 8083
+spring:
+ application:
+  name: gift-service
+ datasource:
+  username: ${DB_USERNAME}
+  password: ${DB_PASSWORD}
+  url: ${DB_URL}
+  driver-class-name: org.postgresql.Driver
+ jpa:
+  hibernate:
+   ddl-auto: update
+  properties:
+   hibernate:
+    dialect: org.hibernate.dialect.PostgreSQLDialect
+    show_sql: true
+    format_sql: true
+ flyway:
+  url: jdbc:postgresql://postgres:5432/gifts
+  user: "gifts"
+  password: "password"
+  schemas: public
+  locations: classpath:db/migration
