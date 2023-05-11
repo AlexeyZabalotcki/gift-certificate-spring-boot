@@ -1,0 +1,28 @@
+SELECT t.name FROM Tag t
+    JOIN t.giftCertificates gc
+    JOIN gc.orders o
+    JOIN o.user u
+WHERE u.id = :userId
+GROUP BY t.name
+ORDER BY COUNT(t.id) DESC, SUM(o.cost) DESC
+
+The purpose of the query is to retrieve the name of each Tag that has been associated with GiftCertificates
+that have been ordered by a User, sorted by the number of times each Tag has been used in such orders,
+and then by the total cost of the orders that contain each Tag.
+
+1. SELECT t.name FROM Tag t:
+Specifies that we want to retrieve the "name" column from the "Tag" table
+2. JOIN t.giftCertificates gc:
+Join the "GiftCertificates" table to the "Tag" table
+3. JOIN gc.orders o:
+Join the "Orders" table to the "GiftCertificates" table
+4. JOIN o.user u:
+Join the "User" table to the "Orders" table
+5. WHERE u.id = :userId:
+Specifies a condition that filters the results to only include orders made by a user
+6. GROUP BY t.name:
+Groups the results by the "name" column of the "Tag" table
+7. ORDER BY COUNT(t.id) DESC, SUM(o.cost) DESC:
+Specifies the order in which the results should be sorted:
+ * The count of each Tag's ID, in descending order
+ * The sum of the cost of all orders that contain each Tag in descending order.
