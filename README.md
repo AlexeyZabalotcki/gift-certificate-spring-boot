@@ -14,11 +14,9 @@ ___
 # __To ```run``` application you need:__
 
 * open folder with project in the terminal ```cd 'your project folder'```
-* checkout to the ```feature-2-migrate-to-hibernate``` branch
-* get the database up in Docker by command ```docker compose up -d --build```
+* checkout to the ```feature-1-spring-boot-application``` branch
 * enter ```gradle clean build```
-* run application from your IDE using Tomcat
-
+* get the database up in Docker by command ```docker compose up -d --build```
 ___
 # __Steps for work with application:__
 
