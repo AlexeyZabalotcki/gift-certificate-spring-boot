@@ -15,10 +15,8 @@ ___
 
 * open folder with project in the terminal ```cd 'your project folder'```
 * checkout to the ```feature-1-spring-boot-application``` branch
-* get the database up in Docker by command ```docker compose up -d --build```
 * enter ```gradle clean build```
-* run application from your IDE using Tomcat
-
+* get the database up in Docker by command ```docker compose up -d --build```
 ___
 # __Steps for work with application:__
 
