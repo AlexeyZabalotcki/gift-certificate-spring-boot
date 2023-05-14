@@ -43,15 +43,4 @@ public class OrderMapper {
         }
         return orderDtos;
     }
-
-    public List<Order> toEntityList(List<OrderDto> orders) {
-        if (orders == null) {
-            return null;
-        }
-        List<Order> orderList = new ArrayList<>();
-        for (OrderDto order : orders) {
-            orderList.add(toEntity(order));
-        }
-        return orderList;
-    }
 }

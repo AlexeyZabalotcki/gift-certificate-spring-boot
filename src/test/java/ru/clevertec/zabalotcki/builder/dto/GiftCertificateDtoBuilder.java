@@ -1,27 +1,28 @@
-package ru.clevertec.zabalotcki.builder;
+package ru.clevertec.zabalotcki.builder.dto;
 
-import ru.clevertec.zabalotcki.model.GiftCertificate;
-import ru.clevertec.zabalotcki.model.Tag;
+import ru.clevertec.zabalotcki.builder.TestBuilder;
+import ru.clevertec.zabalotcki.dto.GiftCertificateDto;
+import ru.clevertec.zabalotcki.dto.TagDto;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GiftCertificateBuilder implements TestBuilder<GiftCertificate> {
+public class GiftCertificateDtoBuilder implements TestBuilder<GiftCertificateDto> {
 
     private Long id = 1L;
     private String name = "certificate";
     private String description = "This is a certificate";
-    private BigDecimal price = new BigDecimal("12.0");
+    private BigDecimal price = new BigDecimal(12.0);
     private int duration = 10;
     private LocalDateTime createDate = LocalDateTime.now();
     private LocalDateTime lastUpdateDate = LocalDateTime.now();
-    private List<Tag> tags = GiftCertificateBuilder.fillList();
+    private List<TagDto> tags = fillList();
 
     @Override
-    public GiftCertificate build() {
-        return GiftCertificate.builder()
+    public GiftCertificateDto build() {
+        return GiftCertificateDto.builder()
                 .id(this.id)
                 .name(this.name)
                 .description(this.description)
@@ -33,14 +34,11 @@ public class GiftCertificateBuilder implements TestBuilder<GiftCertificate> {
                 .build();
     }
 
-    private static List<Tag> fillList() {
-        List<Tag> tags = new ArrayList<>();
-        Tag tag = Tag.builder()
-                .id(1L)
-                .name("Tag")
-                .build();
-        tags.add(tag);
+    private static List<TagDto> fillList() {
+        List<TagDto> tags = new ArrayList<>();
+        TestBuilder<TagDto> testBuilder = new TagDtoBuilder();
+        TagDto tagDto = testBuilder.build();
+        tags.add(tagDto);
         return tags;
     }
 }
-

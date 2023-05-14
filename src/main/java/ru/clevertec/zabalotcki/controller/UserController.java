@@ -39,7 +39,7 @@ public class UserController {
             userDto = userService.findById(id);
         } catch (UserNotFoundException ex) {
             ex.printStackTrace();
-            return new ResponseEntity("Check user id", HttpStatus.NOT_ACCEPTABLE);
+            return new ResponseEntity("Check user id", HttpStatus.NOT_FOUND);
         }
         return ResponseEntity.ok(userDto);
     }

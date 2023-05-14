@@ -40,7 +40,7 @@ public class TagController {
             tagDto = tagService.findById(id);
         } catch (EntityNotFoundException ex) {
             ex.printStackTrace();
-            return new ResponseEntity("Check tag id", HttpStatus.NOT_ACCEPTABLE);
+            return new ResponseEntity("Check tag id", HttpStatus.NOT_FOUND);
         }
         return ResponseEntity.ok(tagDto);
     }
