@@ -25,7 +25,6 @@ import java.time.LocalDateTime;
 @Table(name = "user_orders")
 @Getter
 @Setter
-@ToString
 @EqualsAndHashCode
 @Builder
 @NoArgsConstructor

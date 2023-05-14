@@ -51,7 +51,6 @@ public class GiftCertificateController {
                     .findAll(giftCertificateSpec, PageRequest.of(currentPage, PAGE_SIZE));
             return ResponseEntity.ok(certificates.map(giftCertificateMapper::toDto));
         }
-
     }
 
     @GetMapping("/{id}")
@@ -61,7 +60,7 @@ public class GiftCertificateController {
             giftCertificateDto = giftCertificateService.findById(id);
         } catch (EntityNotFoundException ex) {
             ex.printStackTrace();
-            return new ResponseEntity("Check gift certificate id", HttpStatus.NOT_ACCEPTABLE);
+            return new ResponseEntity("Check gift certificate id", HttpStatus.NOT_FOUND);
         }
         return ResponseEntity.ok(giftCertificateDto);
 
@@ -73,12 +72,12 @@ public class GiftCertificateController {
         return new ResponseEntity<>(saved, HttpStatus.CREATED);
     }
 
-    @PutMapping("/update")
-    public ResponseEntity<GiftCertificateDto> update(@RequestParam Long id,
-                                                     @RequestBody GiftCertificateDto dto) {
-        giftCertificateService.update(id, dto);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
+        @PutMapping("/update")
+        public ResponseEntity<GiftCertificateDto> update(@RequestParam Long id,
+                                                         @RequestBody GiftCertificateDto dto) {
+            giftCertificateService.update(id, dto);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<GiftCertificateDto> deleteById(@PathVariable Long id) {
@@ -86,7 +85,7 @@ public class GiftCertificateController {
             giftCertificateService.deleteById(id);
         } catch (EmptyResultDataAccessException ex) {
             ex.printStackTrace();
-            return new ResponseEntity("That id: " + id + " not found", HttpStatus.NOT_ACCEPTABLE);
+            return new ResponseEntity("That id: " + id + " not found", HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity(HttpStatus.OK);
     }

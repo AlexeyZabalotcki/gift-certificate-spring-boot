@@ -54,7 +54,8 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
         giftCertificateRepository.deleteGiftCertificateTag(id);
         GiftCertificate newCert = updateFields(id, newFields, oldCert);
         giftCertificateRepository.update(id, newCert.getName(), newCert.getDescription(),
-                newCert.getDuration(), newCert.getPrice(), newCert.getCreateDate(), newCert.getLastUpdateDate(), newCert.getTags());
+                newCert.getDuration(), newCert.getPrice(), newCert.getCreateDate(),
+                newCert.getLastUpdateDate(), newCert.getTags());
         return giftCertificateMapper.toDto(newCert);
     }
 

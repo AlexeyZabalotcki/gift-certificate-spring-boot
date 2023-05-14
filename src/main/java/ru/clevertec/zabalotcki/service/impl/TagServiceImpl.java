@@ -41,9 +41,9 @@ public class TagServiceImpl implements TagService {
 
     @Override
     public TagDto findById(Long id) {
-        Optional<Tag> tag = Optional.of(tagRepository.findById(id))
-                .orElseThrow(() -> new EntityNotFoundException("Check teg id " + id));
-        return tagMapper.toDto(tag.get());
+        return Optional.ofNullable(tagRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Check tag id" + id)))
+                .map(tagMapper::toDto)
+                .orElse(null);
     }
 
     @Override

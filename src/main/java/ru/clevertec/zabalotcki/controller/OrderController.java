@@ -36,7 +36,7 @@ public class OrderController {
             orderDto = orderService.findById(id);
         } catch (OrderNotFoundException ex) {
             ex.printStackTrace();
-            return new ResponseEntity("Check order id", HttpStatus.NOT_ACCEPTABLE);
+            return new ResponseEntity("Check order id", HttpStatus.NOT_FOUND);
         }
         return ResponseEntity.ok(orderDto);
     }
